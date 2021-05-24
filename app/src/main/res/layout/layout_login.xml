@@ -64,7 +64,7 @@
                     android:textColorHint="@color/white"
                     android:textColorLink="@color/white"
                     android:textCursorDrawable="@color/white"
-                    android:autofillHints="" />
+                    android:autofillHints="@string/app_name" />
 
                 <EditText
                     android:id="@+id/password_login"
@@ -76,7 +76,7 @@
                     android:inputType="numberPassword"
                     android:padding="10dp"
                     android:textColorHint="@color/white"
-                    android:autofillHints=""
+                    android:autofillHints="@string/app_name"
                     />
 
             </LinearLayout>
@@ -99,7 +99,9 @@
                     android:text="@string/register_button_login"
                     android:textColor="@color/green_light"
                     app:backgroundTint="@color/white"
-                    tools:ignore="RtlHardcoded" />
+                    tools:ignore="RtlHardcoded"
+                    android:onClick="loginAction"
+                    />
             </LinearLayout>
 
         </LinearLayout>
