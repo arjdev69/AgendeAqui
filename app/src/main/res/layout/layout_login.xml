@@ -55,7 +55,6 @@
                     android:ems="10"
                     android:hint="@string/email_login"
                     android:inputType="textEmailAddress"
-                    android:outlineAmbientShadowColor="@color/white"
                     android:padding="10dp"
                     android:scrollbarThumbHorizontal="@color/white"
                     android:scrollbarThumbVertical="@color/white"
@@ -64,7 +63,8 @@
                     android:textColorHighlight="@color/white"
                     android:textColorHint="@color/white"
                     android:textColorLink="@color/white"
-                    android:textCursorDrawable="@color/white" />
+                    android:textCursorDrawable="@color/white"
+                    android:autofillHints="" />
 
                 <EditText
                     android:id="@+id/password_login"
@@ -72,10 +72,13 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_edit_input"
                     android:ems="10"
-                    android:hint="Senha"
+                    android:hint="@string/password_login"
                     android:inputType="numberPassword"
                     android:padding="10dp"
-                    android:textColorHint="@color/white" />
+                    android:textColorHint="@color/white"
+                    android:autofillHints=""
+                    />
+
             </LinearLayout>
 
             <LinearLayout
