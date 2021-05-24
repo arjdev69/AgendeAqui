@@ -1,10 +1,12 @@
-package com.example.agendeaqui;
+package com.example.agendeaqui.activities;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.navigation.ui.AppBarConfiguration;
+
+import com.example.agendeaqui.R;
 
 public class MainActivity extends AppCompatActivity {
 
