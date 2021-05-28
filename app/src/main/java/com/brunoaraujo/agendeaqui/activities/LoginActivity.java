@@ -1,4 +1,4 @@
-package com.example.agendeaqui.activities;
+package com.brunoaraujo.agendeaqui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.navigation.ui.AppBarConfiguration;
 
-import com.example.agendeaqui.R;
+import com.brunoaraujo.agendeaqui.R;
 
 public class LoginActivity extends AppCompatActivity {
 

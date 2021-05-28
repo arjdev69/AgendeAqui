@@ -1,10 +1,10 @@
-package com.example.agendeaqui.activities;
+package com.brunoaraujo.agendeaqui.activities;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.agendeaqui.R;
+import com.brunoaraujo.agendeaqui.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
