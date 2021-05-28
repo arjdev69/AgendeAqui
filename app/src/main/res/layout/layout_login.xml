@@ -84,24 +84,32 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center|center_horizontal|center_vertical"
+                android:layout_gravity="bottom"
                 android:layout_marginTop="70dp"
-                android:gravity="center|center_horizontal|center_vertical"
-                android:orientation="horizontal">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <Button
                     android:id="@+id/buttonLogin"
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/button_shape"
+                    android:text="@string/button_login"
+                    android:textColor="@color/green_light"
+                    app:backgroundTint="@color/white" />
+
+                <Button
+                    android:id="@+id/buttonGoRegister"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="50dp"
+                    android:layout_margin="20dp"
                     android:background="@drawable/button_shape"
                     android:drawableLeft="@drawable/right_arrow"
                     android:text="@string/register_button_login"
                     android:textColor="@color/green_light"
                     app:backgroundTint="@color/white"
-                    tools:ignore="RtlHardcoded"
-                    android:onClick="loginAction"
-                    />
+                    tools:ignore="RtlHardcoded" />
             </LinearLayout>
 
         </LinearLayout>

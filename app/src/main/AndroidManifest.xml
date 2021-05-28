@@ -10,9 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AgendeAqui">
         <activity
+            android:name=".activities.SchedulesActivity"
+            android:label="@string/title_activity_schedules"></activity>
+        <activity
             android:name=".activities.RegisterActivity"
             android:label="@string/title_activity_register"
-            android:theme="@style/Theme.AgendeAqui.NoActionBar"></activity>
+            android:theme="@style/Theme.AgendeAqui.NoActionBar" />
         <activity
             android:name=".activities.LoginActivity"
             android:label="@string/app_name"
