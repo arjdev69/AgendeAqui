@@ -9,12 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AgendeAqui">
+        <activity android:name=".activities.SchedulesActivity"
+            android:label="@string/title_activity_schedules"
+            android:theme="@style/Theme.AgendeAqui.NoActionBar"
+            >
+
+        </activity>
         <activity
-            android:name="com.brunoaraujo.agendeaqui.activities.RegisterActivity"
+            android:name=".activities.RegisterActivity"
             android:label="@string/title_activity_register"
             android:theme="@style/Theme.AgendeAqui.NoActionBar" />
         <activity
-            android:name="com.brunoaraujo.agendeaqui.activities.LoginActivity"
+            android:name=".activities.LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.AgendeAqui.NoActionBar">
             <intent-filter>

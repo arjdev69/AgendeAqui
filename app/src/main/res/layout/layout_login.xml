@@ -95,6 +95,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="20dp"
                     android:background="@drawable/button_shape"
+                    android:onClick="goToSchedulesView"
                     android:text="@string/button_login"
                     android:textColor="@color/green_light"
                     app:backgroundTint="@color/white" />
@@ -106,6 +107,7 @@
                     android:layout_margin="20dp"
                     android:background="@drawable/button_shape"
                     android:drawableLeft="@drawable/right_arrow"
+                    android:onClick="goToRegisterView"
                     android:text="@string/register_button_login"
                     android:textColor="@color/green_light"
                     app:backgroundTint="@color/white"

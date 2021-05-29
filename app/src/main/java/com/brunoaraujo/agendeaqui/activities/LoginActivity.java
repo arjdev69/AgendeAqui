@@ -19,8 +19,12 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.layout_login);
     }
 
-    public void loginAction(View view){
+    public void goToRegisterView(View view){
         startActivity( new Intent(getApplicationContext(), RegisterActivity.class));
+    }
+
+    public void goToSchedulesView(View view){
+        startActivity( new Intent(getApplicationContext(), SchedulesActivity.class));
     }
     
 }
