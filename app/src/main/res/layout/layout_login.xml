@@ -70,14 +70,16 @@
                     android:id="@+id/password_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:autofillHints="@string/app_name"
                     android:background="@drawable/bg_edit_input"
                     android:ems="10"
                     android:hint="@string/password_login"
                     android:inputType="numberPassword"
                     android:padding="10dp"
+                    android:textColor="@color/white"
+                    android:textColorHighlight="@color/white"
                     android:textColorHint="@color/white"
-                    android:autofillHints="@string/app_name"
-                    />
+                    android:textColorLink="@color/white" />
 
             </LinearLayout>
 
@@ -95,7 +97,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="20dp"
                     android:background="@drawable/button_shape"
-                    android:onClick="goToSchedulesView"
+                    android:onClick="loginAction"
                     android:text="@string/button_login"
                     android:textColor="@color/green_light"
                     app:backgroundTint="@color/white" />
