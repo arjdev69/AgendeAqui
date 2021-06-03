@@ -8,115 +8,151 @@
 
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/green_light"
         android:orientation="vertical">
 
-        <ScrollView
-            android:id="@+id/scroll"
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_anchor="@+id/linearLayout"
+        app:layout_anchorGravity="center">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:contentDescription="@string/app_name"
+                app:srcCompat="@drawable/logo" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="30dp"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/imageView2"
+                <EditText
+                    android:id="@+id/name_user"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:contentDescription="@string/app_name"
-                    app:srcCompat="@drawable/logo" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:width="10dp"
+                    android:autofillHints="@string/app_name"
+                    android:background="@drawable/bg_edit_input"
+                    android:ems="10"
+                    android:hint="@string/name_login"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:scrollbarThumbHorizontal="@color/white"
+                    android:scrollbarThumbVertical="@color/white"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/white"
+                    android:textColorHighlight="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textColorLink="@color/white"
+                    android:textCursorDrawable="@color/white" />
 
-
-                <LinearLayout
+                <EditText
+                    android:id="@+id/email_login"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="60dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginRight="30dp"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:width="10dp"
+                    android:autofillHints="@string/app_name"
+                    android:background="@drawable/bg_edit_input"
+                    android:ems="10"
+                    android:hint="@string/email_login"
+                    android:inputType="textEmailAddress"
+                    android:padding="10dp"
+                    android:scrollbarThumbHorizontal="@color/white"
+                    android:scrollbarThumbVertical="@color/white"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/white"
+                    android:textColorHighlight="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textColorLink="@color/white"
+                    android:textCursorDrawable="@color/white" />
 
-                    <EditText
-                        android:id="@+id/email_login"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="15dp"
-                        android:width="10dp"
-                        android:background="@drawable/bg_edit_input"
-                        android:ems="10"
-                        android:hint="@string/email_login"
-                        android:inputType="textEmailAddress"
-                        android:padding="10dp"
-                        android:scrollbarThumbHorizontal="@color/white"
-                        android:scrollbarThumbVertical="@color/white"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/white"
-                        android:textColorHighlight="@color/white"
-                        android:textColorHint="@color/white"
-                        android:textColorLink="@color/white"
-                        android:textCursorDrawable="@color/white"
-                        android:autofillHints="@string/app_name" />
-
-                    <EditText
-                        android:id="@+id/password_login"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_edit_input"
-                        android:ems="10"
-                        android:hint="@string/password_login"
-                        android:inputType="numberPassword"
-                        android:padding="10dp"
-                        android:textColorHint="@color/white"
-                        android:autofillHints="@string/app_name"
-                        android:layout_marginBottom="15dp"
-                        />
-
-                    <EditText
-                        android:id="@+id/password_login_confirm"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_edit_input"
-                        android:ems="10"
-                        android:hint="@string/password_login"
-                        android:inputType="numberPassword"
-                        android:padding="10dp"
-                        android:textColorHint="@color/white"
-                        android:autofillHints="@string/app_name"
-                        />
-
-                </LinearLayout>
-
-
-                <LinearLayout
+                <EditText
+                    android:id="@+id/password_login"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center|center_horizontal|center_vertical"
-                    android:layout_marginTop="70dp"
-                    android:gravity="center|center_horizontal|center_vertical"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:autofillHints="@string/app_name"
+                    android:background="@drawable/bg_edit_input"
+                    android:ems="10"
+                    android:hint="@string/password_login"
+                    android:inputType="numberPassword"
+                    android:padding="10dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
 
-                    <Button
-                        android:id="@+id/buttonGoRegister"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="50dp"
-                        android:background="@drawable/button_shape"
-                        android:drawableLeft="@drawable/right_arrow"
-                        android:text="@string/register_button_login"
-                        android:textColor="@color/green_light"
-                        app:backgroundTint="@color/white"
-                        tools:ignore="RtlHardcoded"
-                        />
-
-                </LinearLayout>
+                <EditText
+                    android:id="@+id/password_login_confirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:autofillHints="@string/app_name"
+                    android:background="@drawable/bg_edit_input"
+                    android:ems="10"
+                    android:hint="@string/password_login_confirm"
+                    android:inputType="numberPassword"
+                    android:padding="10dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white" />
 
             </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="60dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/buttonRgister"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/button_shape"
+                    android:onClick="RegisterUser"
+                    android:text="@string/button_register"
+                    android:textColor="@color/green_light"
+                    app:backgroundTint="@color/white" />
+
+                <Button
+                    android:id="@+id/buttonGoRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/button_shape"
+                    android:drawableLeft="@drawable/right_arrow"
+                    android:onClick="goToLoginView"
+                    android:text="@string/button_have_login"
+                    android:textColor="@color/green_light"
+                    app:backgroundTint="@color/white"
+                    tools:ignore="RtlHardcoded" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
