@@ -13,7 +13,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import com.brunoaraujo.agendeaqui.R;
 import com.brunoaraujo.agendeaqui.model.Login;
 import com.brunoaraujo.agendeaqui.model.Session;
-import com.brunoaraujo.agendeaqui.service.AuthSevice;
+import com.brunoaraujo.agendeaqui.service.AuthService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     private AppBarConfiguration appBarConfiguration;
 
     private Retrofit retrofit;
-    private AuthSevice authService;
+    private AuthService authService;
 
     private EditText email_login;
     private EditText password_login;
@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                 .baseUrl("http://192.168.1.10:3333")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        authService = retrofit.create(AuthSevice.class);
+        authService = retrofit.create(AuthService.class);
     }
 
     private void Auth(String email, String senha){
@@ -58,8 +58,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<Session> call, Response<Session> response) {
 
                 if(response.isSuccessful()) {
-                    //Session loginResponse = response.body();
-                    //Log.d("Login ","Response: " + loginResponse.getUser().getName());
+                    Session loginResponse = response.body();
+                    Log.d("Login ","Response: " + loginResponse.getUser().getName());
                     Toast.makeText(LoginActivity.this,"Login Realizado",Toast.LENGTH_SHORT).show();
                     goToSchedulesView();
                 }else{

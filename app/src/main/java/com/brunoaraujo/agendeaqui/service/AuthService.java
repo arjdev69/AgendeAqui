@@ -7,7 +7,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 
-public interface AuthSevice {
+public interface AuthService {
 
     @POST("/sessions")
     Call<Session> loginService(@Body Login login);
