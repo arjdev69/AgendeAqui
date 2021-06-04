@@ -51,13 +51,13 @@
             android:layout_width="match_parent"
             android:layout_height="104dp"
             android:background="@color/white"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="10dp">
 
             <ImageButton
                 android:id="@+id/imageButtonDashboard"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:background="@color/cardview_shadow_end_color"
                 app:srcCompat="@drawable/dashboard_icon" />
@@ -66,7 +66,6 @@
                 android:id="@+id/imageButtonNew"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:background="@color/cardview_shadow_end_color"
                 app:srcCompat="@drawable/icon_new" />
@@ -75,7 +74,6 @@
                 android:id="@+id/imageButtonPerfil"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:background="@color/cardview_shadow_end_color"
                 app:srcCompat="@drawable/perfil" />
