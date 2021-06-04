@@ -4,6 +4,7 @@
     <string name="name_login">Nome</string>
     <string name="email_login">Email</string>
     <string name="password_login">Senha</string>
+    <string name="password_login_confirm">Confirme a sua senha</string>
 
     <string name="register_button_login">Não Tenho Conta</string>
     <string name="button_login">Realizar Login</string>

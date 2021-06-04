@@ -5,13 +5,15 @@ public class User {
     private Integer id;
     private String name;
     private String email;
-    private String senha;
+    private String password;
+    private Boolean provider;
 
-    public User(Integer id, String name, String email, String senha) {
+    public User(Integer id, String name, String email, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.senha = senha;
+        this.password = password;
+        this.provider = false;
     }
 
     public Integer getId() {

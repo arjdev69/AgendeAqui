@@ -13,7 +13,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import com.brunoaraujo.agendeaqui.R;
 import com.brunoaraujo.agendeaqui.model.Login;
 import com.brunoaraujo.agendeaqui.model.Session;
-import com.brunoaraujo.agendeaqui.service.AuthSevice;
+import com.brunoaraujo.agendeaqui.service.AuthService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     private AppBarConfiguration appBarConfiguration;
 
     private Retrofit retrofit;
-    private AuthSevice authService;
+    private AuthService authService;
 
     private EditText email_login;
     private EditText password_login;
@@ -46,23 +46,27 @@ public class LoginActivity extends AppCompatActivity {
                 .baseUrl("http://192.168.1.10:3333")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        authService = retrofit.create(AuthSevice.class);
+        authService = retrofit.create(AuthService.class);
     }
 
     private void Auth(String email, String senha){
         Login login = new Login(email, senha);
-        Log.d("Login: ", "Data: "+login);
         Call<Session> call = authService.loginService(login);
 
         call.enqueue(new Callback<Session>() {
             @Override
             public void onResponse(Call<Session> call, Response<Session> response) {
 
-                Log.d("D:- ","Data: " + response.raw());
-
-                Toast.makeText(LoginActivity.this,
-                        "Login Realizado",
-                        Toast.LENGTH_SHORT).show();
+                if(response.isSuccessful()) {
+                    Session loginResponse = response.body();
+                    Log.d("Login ","Response: " + loginResponse.getUser().getName());
+                    Toast.makeText(LoginActivity.this,"Login Realizado",Toast.LENGTH_SHORT).show();
+                    goToSchedulesView();
+                }else{
+                    Toast.makeText(LoginActivity.this,
+                            "Login não foi realizado",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
@@ -99,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
         startActivity( new Intent(getApplicationContext(), RegisterActivity.class));
     }
 
-    public void goToSchedulesView(View view){
+    public void goToSchedulesView(){
         startActivity( new Intent(getApplicationContext(), SchedulesActivity.class));
     }
     
