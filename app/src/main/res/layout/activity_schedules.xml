@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:foreground="@drawable/bg_edit_input"
     tools:context=".activities.RegisterActivity">
 
 
@@ -48,30 +49,37 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="104dp"
             android:background="@color/white"
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="82dp"
-                android:layout_height="74dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/right_arrow" />
-
-            <Button
-                android:id="@+id/button7"
+                android:id="@+id/imageButtonDashboard"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:background="@color/cardview_shadow_end_color"
+                app:srcCompat="@drawable/dashboard_icon" />
 
-            <Button
-                android:id="@+id/button6"
+            <ImageButton
+                android:id="@+id/imageButtonNew"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:background="@color/cardview_shadow_end_color"
+                app:srcCompat="@drawable/icon_new" />
+
+            <ImageButton
+                android:id="@+id/imageButtonPerfil"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@color/cardview_shadow_end_color"
+                app:srcCompat="@drawable/perfil" />
+
         </LinearLayout>
 
     </LinearLayout>
