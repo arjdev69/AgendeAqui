@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:foreground="@drawable/bg_edit_input"
     tools:context=".activities.RegisterActivity">
 
 
@@ -43,42 +42,17 @@
                 android:textSize="22sp" />
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
+        <FrameLayout
+            android:id="@+id/viewPage"
             android:layout_width="match_parent"
-            android:layout_height="528dp" />
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-        <LinearLayout
+        <include
+            layout="@layout/bottom_nav"
             android:layout_width="match_parent"
-            android:layout_height="104dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            android:padding="10dp">
-
-            <ImageButton
-                android:id="@+id/imageButtonDashboard"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/cardview_shadow_end_color"
-                app:srcCompat="@drawable/dashboard_icon" />
-
-            <ImageButton
-                android:id="@+id/imageButtonNew"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/cardview_shadow_end_color"
-                app:srcCompat="@drawable/icon_new" />
-
-            <ImageButton
-                android:id="@+id/imageButtonPerfil"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/cardview_shadow_end_color"
-                app:srcCompat="@drawable/perfil" />
-
-        </LinearLayout>
+            android:layout_height="56dp" />
 
     </LinearLayout>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
