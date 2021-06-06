@@ -21,8 +21,6 @@ import com.brunoaraujo.agendeaqui.model.Appointments;
 import com.brunoaraujo.agendeaqui.model.Session;
 import com.brunoaraujo.agendeaqui.service.AppointmentService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.util.List;
@@ -87,7 +85,6 @@ public class SchedulesActivity extends AppCompatActivity {
             public void onResponse(Call<List<Appointments>> call, Response<List<Appointments>> response) {
                 if(response.isSuccessful()){
                     List<Appointments> appointments = response.body();
-                    Log.d(" - - ", appointments.get(0).getProvider().getName());
                     Toast.makeText(SchedulesActivity.this,"Agendamentos listados", Toast.LENGTH_SHORT).show();
                 }else{
                     Log.d("Resp: ", " -> " + response.message());
