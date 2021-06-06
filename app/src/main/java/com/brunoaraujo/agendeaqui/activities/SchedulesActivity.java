@@ -1,5 +1,7 @@
 package com.brunoaraujo.agendeaqui.activities;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -16,8 +18,11 @@ import com.brunoaraujo.agendeaqui.fragment.DashboardFragment;
 import com.brunoaraujo.agendeaqui.fragment.PerfilFragment;
 import com.brunoaraujo.agendeaqui.fragment.SchedulesFragment;
 import com.brunoaraujo.agendeaqui.model.Appointments;
+import com.brunoaraujo.agendeaqui.model.Session;
 import com.brunoaraujo.agendeaqui.service.AppointmentService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.util.List;
@@ -35,10 +40,16 @@ public class SchedulesActivity extends AppCompatActivity {
 
     private TextView title_view;
 
+    private String token = "";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedules);
+
+        // User infos
+        this.getUserInfo();
 
         // Layout id's
         title_view = findViewById(R.id.title_schedules);
@@ -52,7 +63,6 @@ public class SchedulesActivity extends AppCompatActivity {
         // Services
         this.StartService();
         this.getAppointmentsList();
-
     }
 
     @Override
@@ -70,7 +80,6 @@ public class SchedulesActivity extends AppCompatActivity {
     }
 
     public void getAppointmentsList(){
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjIyOTkxMDg2LCJleHAiOjE2MjM1OTU4ODZ9.Gbxx5xEpHJqYdnml_m-XunQ4AQ9zAJL_gmxxQnMWYcA";
         Call<List<Appointments>> call = appointmentService.getAppointmentsList("Bearer " + token);
 
         call.enqueue(new Callback<List<Appointments>>() {
@@ -78,7 +87,7 @@ public class SchedulesActivity extends AppCompatActivity {
             public void onResponse(Call<List<Appointments>> call, Response<List<Appointments>> response) {
                 if(response.isSuccessful()){
                     List<Appointments> appointments = response.body();
-                    Log.d("Resp ", " -> " + appointments.get(0).getProvider().getName());
+                    Log.d(" - - ", appointments.get(0).getProvider().getName());
                     Toast.makeText(SchedulesActivity.this,"Agendamentos listados", Toast.LENGTH_SHORT).show();
                 }else{
                     Log.d("Resp: ", " -> " + response.message());
@@ -88,10 +97,15 @@ public class SchedulesActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Appointments>> call, Throwable t) {
-                Log.d("RespError: ", " -> " + t.getMessage());
                 Toast.makeText(SchedulesActivity.this,"Falha na requisição", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    // Actions
+    public void getUserInfo(){
+        SharedPreferences preferences = getSharedPreferences("com.brunoaraujo.agendeaqui", Context.MODE_PRIVATE);
+        token = preferences.getString("sessionToken", "");
     }
 
     // Tabs Navigation
@@ -121,7 +135,6 @@ public class SchedulesActivity extends AppCompatActivity {
                         fragmentTransaction.replace(R.id.viewPage, new DashboardFragment()).commit();
                         title_view.setText("Agendamentos");
                         getAppointmentsList();
-
                         return true;
                     case R.id.id_add_schedules:
                         fragmentTransaction.replace(R.id.viewPage, new SchedulesFragment()).commit();
@@ -131,7 +144,6 @@ public class SchedulesActivity extends AppCompatActivity {
                         fragmentTransaction.replace(R.id.viewPage, new PerfilFragment()).commit();
                         title_view.setText("Meu Perfil");
                         return true;
-
                 }
 
                 return false;

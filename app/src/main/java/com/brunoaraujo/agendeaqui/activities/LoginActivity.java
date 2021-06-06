@@ -1,6 +1,8 @@
 package com.brunoaraujo.agendeaqui.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,6 +32,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText email_login;
     private EditText password_login;
 
+    private Session loginResponse;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_login);
@@ -56,11 +60,10 @@ public class LoginActivity extends AppCompatActivity {
         call.enqueue(new Callback<Session>() {
             @Override
             public void onResponse(Call<Session> call, Response<Session> response) {
-
                 if(response.isSuccessful()) {
-                    Session loginResponse = response.body();
-                    Log.d("Login ","Response: " + loginResponse.getToken());
+                    loginResponse = response.body();
                     Toast.makeText(LoginActivity.this,"Login Realizado",Toast.LENGTH_SHORT).show();
+                    saveUserInfo();
                     goToSchedulesView();
                 }else{
                     Toast.makeText(LoginActivity.this,
@@ -106,5 +109,9 @@ public class LoginActivity extends AppCompatActivity {
     public void goToSchedulesView(){
         startActivity( new Intent(getApplicationContext(), SchedulesActivity.class));
     }
-    
+
+    public void saveUserInfo(){
+        SharedPreferences preferences = getSharedPreferences("com.brunoaraujo.agendeaqui", Context.MODE_PRIVATE);
+        preferences.edit().putString("sessionToken", loginResponse.getToken()).commit();
+    }
 }
