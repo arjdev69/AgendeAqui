@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 if(response.isSuccessful()) {
                     Session loginResponse = response.body();
-                    Log.d("Login ","Response: " + loginResponse.getUser().getName());
+                    Log.d("Login ","Response: " + loginResponse.getToken());
                     Toast.makeText(LoginActivity.this,"Login Realizado",Toast.LENGTH_SHORT).show();
                     goToSchedulesView();
                 }else{
