@@ -1,9 +1,6 @@
 package com.brunoaraujo.agendeaqui.activities;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,16 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.brunoaraujo.agendeaqui.R;
-import com.brunoaraujo.agendeaqui.adapter.AdapterSchedules;
 import com.brunoaraujo.agendeaqui.fragment.DashboardFragment;
 import com.brunoaraujo.agendeaqui.fragment.PerfilFragment;
-import com.brunoaraujo.agendeaqui.fragment.SchedulesFragment;
+import com.brunoaraujo.agendeaqui.fragment.ProvidersFragment;
 import com.brunoaraujo.agendeaqui.model.Appointments;
-import com.brunoaraujo.agendeaqui.model.Session;
 import com.brunoaraujo.agendeaqui.service.AppointmentService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
@@ -29,11 +22,7 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SchedulesActivity extends AppCompatActivity {
 
@@ -100,7 +89,7 @@ public class SchedulesActivity extends AppCompatActivity {
                         title_view.setText("Agendamentos");
                         return true;
                     case R.id.id_add_schedules:
-                        fragmentTransaction.replace(R.id.viewPage, new SchedulesFragment()).commit();
+                        fragmentTransaction.replace(R.id.viewPage, new ProvidersFragment()).commit();
                         title_view.setText("Intituições");
                         return true;
                     case R.id.id_perfil:

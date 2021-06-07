@@ -15,10 +15,9 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.brunoaraujo.agendeaqui.R;
-import com.brunoaraujo.agendeaqui.activities.SchedulesActivity;
-import com.brunoaraujo.agendeaqui.adapter.AdapterSchedules;
-import com.brunoaraujo.agendeaqui.model.Appointments;
-import com.brunoaraujo.agendeaqui.service.AppointmentService;
+import com.brunoaraujo.agendeaqui.adapter.AdapterProviders;
+import com.brunoaraujo.agendeaqui.model.Provider;
+import com.brunoaraujo.agendeaqui.service.ProviderService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,19 +28,19 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class DashboardFragment extends Fragment {
+public class ProvidersFragment extends Fragment {
 
+    private List<Provider> providersList = new ArrayList<>();;
     private RecyclerView recyclerView;
-    public List<Appointments> appointments = new ArrayList<>();
 
     private Retrofit retrofit;
-    private AppointmentService appointmentService;
+    private ProviderService providerService;
 
     private String token = "";
 
-    private AdapterSchedules adpSchedules;
+    private AdapterProviders adpProviders;
 
-    public DashboardFragment() {
+    public ProvidersFragment() {
         // Required empty public constructor
     }
 
@@ -50,29 +49,27 @@ public class DashboardFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
         }
-
-       // Log.d("", appointments.get(0).getId().toString());
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        View view = inflater.inflate(R.layout.fragment_providers, container, false);
 
         this.getUserInfo(container.getContext());
         this.StartService();
-        this.getAppointmentsList(container.getContext());
+        this.getProvidersList(container.getContext());
 
-        recyclerView = view.findViewById(R.id.listViewDashboard);
+        recyclerView = view.findViewById(R.id.listViewSchedules);
 
-        adpSchedules = new AdapterSchedules(container.getContext(), appointments);
+        adpProviders = new AdapterProviders(container.getContext(), providersList);
 
         //Setup recyclerView
         final LinearLayoutManager layoutManager = new LinearLayoutManager(container.getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adpSchedules);
+        recyclerView.setAdapter(adpProviders);
 
         return view;
     }
@@ -83,19 +80,19 @@ public class DashboardFragment extends Fragment {
                 .baseUrl("http://192.168.1.10:3333")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        appointmentService = retrofit.create(AppointmentService.class);
+        providerService = retrofit.create(ProviderService.class);
     }
 
-    public void getAppointmentsList(Context cont){
-        Call<List<Appointments>> call = appointmentService.getAppointmentsList("Bearer " + token);
+    public void getProvidersList(Context cont){
+        Call<List<Provider>> call = providerService.getProviderList("Bearer " + token);
 
-        call.enqueue(new Callback<List<Appointments>>() {
+        call.enqueue(new Callback<List<Provider>>() {
             @Override
-            public void onResponse(Call<List<Appointments>> call, Response<List<Appointments>> response) {
+            public void onResponse(Call<List<Provider>> call, Response<List<Provider>> response) {
                 if(response.isSuccessful()){
-                    appointments = response.body();
-                    adpSchedules.adiciona(appointments);
-                    Toast.makeText( cont,"Agendamentos listados", Toast.LENGTH_SHORT).show();
+                    providersList = response.body();
+                    adpProviders.callData(providersList);
+                    Toast.makeText( cont,"Instituições listadas", Toast.LENGTH_SHORT).show();
                 }else{
                     Log.d("Resp: ", " -> " + response.message());
                     Toast.makeText(cont," - ", Toast.LENGTH_SHORT).show();
@@ -103,7 +100,7 @@ public class DashboardFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Appointments>> call, Throwable t) {
+            public void onFailure(Call<List<Provider>> call, Throwable t) {
                 Toast.makeText(cont,"Falha na requisição", Toast.LENGTH_SHORT).show();
             }
         });
@@ -114,5 +111,4 @@ public class DashboardFragment extends Fragment {
         SharedPreferences preferences = cont.getSharedPreferences("com.brunoaraujo.agendeaqui", Context.MODE_PRIVATE);
         token = preferences.getString("sessionToken", "");
     }
-
 }

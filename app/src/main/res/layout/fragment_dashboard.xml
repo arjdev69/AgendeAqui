@@ -10,10 +10,8 @@
         android:id="@+id/listViewDashboard"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"
         app:layoutManager="LinearLayoutManager"
-        tools:listitem="@layout/view_schedules"
-        />
+        tools:listitem="@layout/view_schedules" />
 
 
 </FrameLayout>
